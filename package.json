@@ -1,0 +1,17 @@
+{
+  "name": "chow-down",
+  "version": "1.0.0",
+  "description": "A food ranking and tabulating engine for you and your friends!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "food",
+    "ranking",
+    "friends",
+    "fun"
+  ],
+  "author": "Nathan Perfetti <nathanperfetti@gmail.com>",
+  "license": "MIT"
+}
