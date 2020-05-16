@@ -2,10 +2,13 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 var logger = require('morgan');
 let ejs = require('ejs');
+const serveStatic = require('serve-static')
 
-const port = process.env.port || 3001;
+const port = process.env.port || 3002;
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -17,12 +20,21 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
+
+
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+//here we are configuring dist to serve app files
+app.use('/', serveStatic(path.join(__dirname, '/dist')))
+
+// this * route is to serve project on different page routes except root `/`
+app.get(/.*/, function (req, res) {
+	res.sendFile(path.join(__dirname, '/dist/index.html'))
+})
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
