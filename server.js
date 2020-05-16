@@ -53,4 +53,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(port, () => console.log(`--- 🎧 App listening at http://localhost:${port}`))
+app.listen(port, () => console.log(`--- 🎧 App listening at http://localhost:${ port }`))
