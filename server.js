@@ -8,7 +8,7 @@ var logger = require('morgan');
 let ejs = require('ejs');
 const serveStatic = require('serve-static')
 
-const port = process.env.port || 3002;
+const port = process.env.port || 8080;
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -29,7 +29,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //here we are configuring dist to serve app files
-app.use('/', serveStatic(path.join(__dirname, '/dist')))
+app.use('/', serveStatic(path.join(__dirname, '/client/dist')))
 
 // this * route is to serve project on different page routes except root `/`
 app.get(/.*/, function (req, res) {
