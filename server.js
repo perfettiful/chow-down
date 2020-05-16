@@ -8,7 +8,7 @@ var logger = require('morgan');
 let ejs = require('ejs');
 const serveStatic = require('serve-static')
 
-const port = process.env.port || 8080;
+const port = process.env.PORT || 8080;
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
